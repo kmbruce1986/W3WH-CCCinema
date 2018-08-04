@@ -11,5 +11,12 @@ film1 = Film.new({
 
 film1.save
 
+customer1 = Customer.new({
+  'name' => "John",
+  'funds' => 50
+  })
+
+customer1.save
+
 binding.pry
 nil
