@@ -58,7 +58,7 @@ class Customer
   end
 
   def number_of_tickets_bought
-    sql = "SELECT (tickets.customer_id) FROM tickets WHERE tickets.customer_id = $1"
+    sql = "SELECT tickets.customer_id FROM tickets WHERE tickets.customer_id = $1"
     values = [@id]
     number_of_tickets_bought = SqlRunner.run(sql, values)
     return number_of_tickets_bought.count
