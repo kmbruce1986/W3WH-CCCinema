@@ -24,4 +24,5 @@ class Film
     result = films.map {|film| Film.new(film)}
     return result
   end
+  
 end
