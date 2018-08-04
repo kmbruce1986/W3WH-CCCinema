@@ -50,5 +50,11 @@ class Customer
     return films.map {|film| Film.new(film)}
   end
 
+  def buy_ticket
+    sql = "SELECT SUM(films.price) FROM films INNER JOIN tickets ON films.id = tickets.film_id WHERE tickets.customer_id = $1"
+    values = [@id]
+    film_price = SqlRunner.run(sql, values).first
+    return @funds - film_price['sum'].to_i
+  end
 
 end
