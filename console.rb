@@ -4,6 +4,11 @@ require_relative('models/ticket')
 
 require('pry-byebug')
 
+Ticket.delete_all
+Customer.delete_all
+Film.delete_all
+
+
 film1 = Film.new({
   'title' => "Antman and the Wasp",
   'price' => 5
