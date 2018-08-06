@@ -56,4 +56,12 @@ class Film
     return number_of_customers.count
   end
 
+  def most_tickets_sold
+    sql = "SELECT screenings.start_time FROM screenings INNER JOIN tickets ON screenings.id = tickets.screening_id WHERE tickets.film_id = $1"
+    values = [@id]
+    tickets_sold = SqlRunner.run(sql, values)
+    times = tickets_sold.map {|screening| screening['start_time']}
+    return times.max_by {|time| times.count(time)}
+  end
+
 end
